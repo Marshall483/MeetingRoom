@@ -1,5 +1,5 @@
 # Hello!!
-### - I'm readme!
+### I'm readme!
 
-- Wow, that's cool!
+Wow, that's cool!
 # Googbye!
