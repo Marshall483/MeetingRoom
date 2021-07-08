@@ -24,9 +24,9 @@ namespace Web
         {
 
             services.AddControllers();
-            services.AddSwaggerGen(c =>
-            {
-                c.SwaggerDoc("v1", new OpenApiInfo { Title = "Meeting Room Master", Version = "v1" });
+            services.AddSwaggerGen(c => {
+                c.SwaggerDoc("v1", 
+                new OpenApiInfo { Title = "Meeting Room Master", Version = "v1" });
             });
         }
 
@@ -40,10 +40,11 @@ namespace Web
             }
 
             app.UseHttpsRedirection();
-            
             app.UseHsts();
-            
+
             app.UseRouting();
+
+            app.UseStaticFiles();
 
             app.UseAuthentication();
             app.UseAuthorization();
