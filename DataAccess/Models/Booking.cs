@@ -8,6 +8,16 @@ namespace DataAccess.Models
 {
     public class Booking
     {
+        //constructor
+        public Booking(DateTime bookingStartTime, DateTime bookingEndTime, string name,
+            string authorOfBooking)
+        {
+            BookingStartTime = bookingStartTime;
+            BookingEndTime = bookingEndTime;
+            Name = name;
+            AuthorOfBooking = authorOfBooking;
+        }
+
         public int Id { get; set; }
         public DateTime BookingStartTime { get; set; }
         public DateTime BookingEndTime { get; set; }

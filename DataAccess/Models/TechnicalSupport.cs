@@ -8,6 +8,12 @@ namespace DataAccess.Models
 {
     public class TechnicalSupport
     {
+        //constructor
+        public TechnicalSupport(string name)
+        {
+            Name = name;
+        }
+
         public int Id { get; set; }
         public string Name { get; set; }
     }
