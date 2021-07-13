@@ -71,7 +71,7 @@ namespace DataAccess.Communication
         public void DeleteBooking(int id)
         {
             var booking = db.Booking.Where(x => x.Id == id)
-               .FirstOrDefault();
+                .FirstOrDefault();
             db.Booking.Remove(booking);
             db.SaveChanges();
         }
@@ -106,7 +106,7 @@ namespace DataAccess.Communication
         public void DeleteTechnicalSupport(int id)
         {
             var technic = db.TechnicalSupport.Where(x => x.Id == id)
-               .FirstOrDefault();
+                .FirstOrDefault();
             db.TechnicalSupport.Remove(technic);
             db.SaveChanges();
         }

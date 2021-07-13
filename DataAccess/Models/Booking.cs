@@ -19,6 +19,7 @@ namespace DataAccess.Models
         }
 
         public int Id { get; set; }
+        public MeetingRoom MeetingRoom { get; set; }
         public DateTime BookingStartTime { get; set; }
         public DateTime BookingEndTime { get; set; }
         public string Name { get; set; }
