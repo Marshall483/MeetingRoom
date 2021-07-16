@@ -16,6 +16,7 @@ namespace DataAccess.Communication
         void EditRoom(MeetingRoom room);
         void DeleteRoom(int id);
         MeetingRoom GetRoom(int id);
+        MeetingRoom GetRoomWithBooking(int id);
         List<MeetingRoom> GetRooms();
         void AddBooking(Booking booking);
         void EditBooking(Booking booking);

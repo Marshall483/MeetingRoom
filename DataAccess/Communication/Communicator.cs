@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
 
 namespace DataAccess.Communication
 {
@@ -45,6 +46,13 @@ namespace DataAccess.Communication
         public MeetingRoom GetRoom(int id)
         {
             return db.MeetingRoom.Where(x => x.Id == id).FirstOrDefault();
+        }
+        
+        public MeetingRoom GetRoomWithBooking(int id)
+        {
+            return db.MeetingRoom
+                .Include(mr => mr.Bookings)
+                .FirstOrDefault(x => x.Id == id);
         }
 
         // get list of rooms
