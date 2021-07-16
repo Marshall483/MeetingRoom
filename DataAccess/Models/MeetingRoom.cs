@@ -25,5 +25,7 @@ namespace DataAccess.Models
         public string Name { get; set; }
         public int Capacity { get; set; }
         public List<int> TechnicalSupports { get; set; }
+        public bool IsAvailable { get; set; }
+        public List<Booking> Bookings { get; set; }
     }
 }

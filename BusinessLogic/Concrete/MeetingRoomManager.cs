@@ -7,7 +7,7 @@ using DataAccess.Models;
 
 namespace BusinessLogic.Concrete
 {
-    public class MeetingRoomManager:IMeetingRoomService
+    public class MeetingRoomManager//:IMeetingRoomService
     {
         private readonly ICommunicator _communicator;
 
@@ -16,7 +16,7 @@ namespace BusinessLogic.Concrete
             _communicator = communicator;
         }
         
-        public IEnumerable<MeetingRoom> Find(FindMeetingRoomForm findMeetingRoomForm)
+        public IEnumerable<MeetingRoom> FindByConditions(FindMeetingRoomForm findMeetingRoomForm)
         {
             var meetingRooms = _communicator.GetRooms();
             

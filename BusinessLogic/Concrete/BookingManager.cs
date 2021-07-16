@@ -43,12 +43,13 @@ namespace BusinessLogic.Concrete
 
         private bool BookingIsPossible(Booking booking)
         {
-            if (booking.MeetingRoom is null || !booking.MeetingRoom.IsAvailable)
+            var meetingRoom = _communicator.GetRoom(booking.MeetingRoomId);
+            if (meetingRoom is null || !meetingRoom.IsAvailable)
             {
                 return false;
             }
             var allBooking = _communicator.GetBookings()
-                .Where(b => b.MeetingRoom.Id == booking.MeetingRoom.Id &&
+                .Where(b => b.MeetingRoomId == booking.MeetingRoomId &&
                             b.BookingStartTime == booking.BookingStartTime);
             
             return allBooking.All(curBooking => 
