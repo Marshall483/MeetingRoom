@@ -31,7 +31,8 @@ namespace Web
                 new OpenApiInfo { Title = "Meeting Room Master", Version = "v1" });
             });
             services.AddDbContext<ApplicationContext>(options =>
-                options.UseNpgsql(Configuration.GetConnectionString("DefaultConnection")));
+                options.UseNpgsql(Configuration.GetConnectionString("DefaultConnection"),
+                optionsBuilder => optionsBuilder.MigrationsAssembly("MeetingRoom")));
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
