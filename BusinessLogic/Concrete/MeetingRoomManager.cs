@@ -57,5 +57,11 @@ namespace BusinessLogic.Concrete
 
             return meetingRooms;
         }
+
+        public MeetingRoom GetMeetingRoom(int roomId)
+        {
+            var meetingRoom = _communicator.GetRoomWithBooking(roomId);
+            return meetingRoom;
+        }
     }
 }

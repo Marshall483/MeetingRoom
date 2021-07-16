@@ -1,4 +1,8 @@
-﻿using BusinessLogic.Abstract;
+﻿using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
+using BusinessLogic.Abstract;
 using DataAccess.Communication;
 using DataAccess.Models;
 
@@ -15,7 +19,11 @@ namespace BusinessLogic.Concrete
 
         public void Book(Booking booking)
         {
-            _communicator.AddBooking(booking);
+            var bookingIsPossible = BookingIsPossible(booking);
+            if (bookingIsPossible)
+            {
+                _communicator.AddBooking(booking);
+            }
         }
 
         public void Edit(Booking booking)
@@ -31,6 +39,22 @@ namespace BusinessLogic.Concrete
         public void Cancel(Booking booking)
         {
             _communicator.DeleteBooking(booking.Id);
+        }
+
+        private bool BookingIsPossible(Booking booking)
+        {
+            if (booking.MeetingRoom is null || !booking.MeetingRoom.IsAvailable)
+            {
+                return false;
+            }
+            var allBooking = _communicator.GetBookings()
+                .Where(b => b.MeetingRoom.Id == booking.MeetingRoom.Id &&
+                            b.BookingStartTime == booking.BookingStartTime);
+            
+            return allBooking.All(curBooking => 
+                booking.BookingStartTime > curBooking.BookingEndTime || 
+                booking.BookingEndTime < curBooking.BookingStartTime
+                );
         }
     }
 }
